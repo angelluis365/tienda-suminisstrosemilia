@@ -157,14 +157,35 @@ function setAdminVisibility(authenticated) {
   qs("#seo-nav-link").hidden = !authenticated;
   qs("#admin-logout-button").hidden = !authenticated;
   qs("#admin-status").hidden = !authenticated;
+  qs("#admin-account-note").hidden = !authenticated;
+  qs("#customer-area-shell").hidden = authenticated;
   if (authenticated) {
     qs("#admin-login-message").textContent = `Sesion iniciada como ${state.adminSession.email}.`;
   }
 }
 
+function setAccountView(view) {
+  qsa(".account-view-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.accountView === view);
+  });
+  qsa(".account-view-panel").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === `account-view-${view}`);
+  });
+}
+
+function setCustomerSection(section) {
+  qsa(".customer-section-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.customerSection === section);
+  });
+  qsa(".customer-section-panel").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === `customer-section-${section}`);
+  });
+}
+
 function setCustomerVisibility(authenticated) {
   state.customerSession.authenticated = authenticated;
   qs("#customer-logout-button").hidden = !authenticated;
+  qs("#account-view-dashboard-button").hidden = !authenticated;
   qs("#customer-session-card").hidden = !authenticated;
   const checkoutFields = qs("#checkout-form").elements;
   checkoutFields.username.required = !authenticated;
@@ -183,6 +204,12 @@ function setCustomerVisibility(authenticated) {
     qs("#customer-session-summary").textContent =
       `${state.customerSession.customer.fullName}${state.customerSession.customer.companyName ? ` - ${state.customerSession.customer.companyName}` : ""}. Puedes revisar tus pedidos y repetir compras con tus datos ya guardados.`;
     renderCustomerDashboard(state.customerSession.customer);
+    if (!state.adminSession.authenticated) {
+      setAccountView("dashboard");
+      setCustomerSection("overview");
+    }
+  } else if (!state.adminSession.authenticated) {
+    setAccountView("login");
   }
 }
 
@@ -196,6 +223,10 @@ function renderCustomerDashboard(customer) {
   qs("#account-card-shipping-extra").textContent = `${customer.shippingProperty ? `${customer.shippingProperty} · ` : ""}${customer.shippingCity}, ${customer.shippingProvince}, ${customer.shippingCountry}`;
   qs("#account-card-billing").textContent = customer.billingStreet;
   qs("#account-card-billing-extra").textContent = `${customer.billingProperty ? `${customer.billingProperty} · ` : ""}${customer.billingCity}, ${customer.billingProvince}, ${customer.billingCountry}`;
+  qs("#account-card-shipping-address").textContent = customer.shippingStreet;
+  qs("#account-card-shipping-address-extra").textContent = `${customer.shippingProperty ? `${customer.shippingProperty} · ` : ""}${customer.shippingCity}, ${customer.shippingProvince}, ${customer.shippingCountry}`;
+  qs("#account-card-billing-address").textContent = customer.billingStreet;
+  qs("#account-card-billing-address-extra").textContent = `${customer.billingProperty ? `${customer.billingProperty} · ` : ""}${customer.billingCity}, ${customer.billingProvince}, ${customer.billingCountry}`;
 }
 
 function refreshCategoryFilter() {
@@ -1322,6 +1353,19 @@ function setupCompanyToggles() {
   });
 }
 
+function setupCustomerViews() {
+  qsa(".account-view-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.dataset.accountView === "dashboard" && !state.customerSession.authenticated) return;
+      setAccountView(button.dataset.accountView);
+    });
+  });
+
+  qsa(".customer-section-button").forEach((button) => {
+    button.addEventListener("click", () => setCustomerSection(button.dataset.customerSection));
+  });
+}
+
 function setupEvents() {
   qs("#search-products").addEventListener("input", renderProducts);
   qs("#category-filter").addEventListener("change", renderProducts);
@@ -1362,6 +1406,7 @@ function setupEvents() {
     qs("#comprar").scrollIntoView({ behavior: "smooth" });
   });
   setupCompanyToggles();
+  setupCustomerViews();
 }
 
 async function bootstrap() {

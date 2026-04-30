@@ -193,23 +193,44 @@
       <section class="section" id="cuenta">
         <div class="section-head">
           <p class="eyebrow">Cliente</p>
-          <h2>Alta y acceso de cliente</h2>
+          <h2>Acceso y area de cliente</h2>
         </div>
-        <div class="customer-access-layout">
-          <div class="customer-access-column">
-            <form class="form-card customer-login-card" id="customer-login-form">
-              <h3>Entrar como cliente</h3>
-              <div class="form-grid compact-grid">
-                <label>Email o usuario<input name="identifier" required /></label>
-                <label>Contraseña<input name="password" type="password" required /></label>
-              </div>
-              <div class="hero-actions account-actions">
-                <button class="button button-primary" type="submit">Entrar</button>
-                <button class="button button-ghost" id="customer-logout-button" type="button" hidden>Cerrar sesion</button>
-              </div>
-              <p class="form-note" id="customer-login-message"></p>
-            </form>
 
+        <div class="form-card admin-account-note" id="admin-account-note" hidden>
+          <h3>Sesion de administrador activa</h3>
+          <p class="form-note">Mientras trabajas como administrador, la zona de cliente queda fuera de pantalla para no mezclar vistas ni formularios.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#panel">Ir al panel</a>
+            <a class="button button-ghost" href="#acceso-admin">Volver al acceso admin</a>
+          </div>
+        </div>
+
+        <div class="customer-area-shell" id="customer-area-shell">
+          <div class="account-switcher" id="account-switcher">
+            <button class="account-view-button active" data-account-view="login" type="button">Entrar</button>
+            <button class="account-view-button" data-account-view="register" type="button">Crear cuenta</button>
+            <button class="account-view-button" data-account-view="dashboard" id="account-view-dashboard-button" type="button" hidden>Mi cuenta</button>
+          </div>
+
+          <div class="account-view-panel active" id="account-view-login">
+            <div class="customer-access-layout customer-access-layout-wide">
+              <div class="customer-access-column">
+                <form class="form-card customer-login-card" id="customer-login-form">
+                  <h3>Entrar como cliente</h3>
+                  <div class="form-grid compact-grid">
+                    <label>Email o usuario<input name="identifier" required /></label>
+                    <label>Contraseña<input name="password" type="password" required /></label>
+                  </div>
+                  <div class="hero-actions account-actions">
+                    <button class="button button-primary" type="submit">Entrar</button>
+                  </div>
+                  <p class="form-note" id="customer-login-message"></p>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="account-view-panel" id="account-view-register">
             <form class="form-card customer-register-card" id="customer-register-form">
               <h3>Alta de cliente</h3>
               <div class="form-grid">
@@ -242,75 +263,104 @@
               <p class="form-note" id="customer-register-message"></p>
             </form>
           </div>
-        </div>
 
-        <div class="customer-session-shell" id="customer-session-card" hidden>
-          <div class="customer-dashboard-head">
-            <div>
-              <h3>Mi cuenta</h3>
-              <p class="form-note" id="customer-session-summary"></p>
-            </div>
-            <span class="chip" id="customer-session-chip"></span>
-          </div>
-          <div class="customer-session-layout">
-            <div class="customer-session-main">
-              <div class="customer-dashboard-grid">
-                <article class="account-card account-card-hero">
-                  <span>Cliente</span>
-                  <strong id="account-card-name"></strong>
-                  <small id="account-card-email"></small>
-                </article>
-                <article class="account-card">
-                  <span>Direccion de entrega</span>
-                  <strong id="account-card-shipping"></strong>
-                  <small id="account-card-shipping-extra"></small>
-                </article>
-                <article class="account-card">
-                  <span>Direccion de facturacion</span>
-                  <strong id="account-card-billing"></strong>
-                  <small id="account-card-billing-extra"></small>
-                </article>
-              </div>
-              <div class="form-card customer-orders-card">
-                <div class="section-head section-head-compact">
-                  <h3>Mis pedidos</h3>
+          <div class="account-view-panel" id="account-view-dashboard">
+            <div class="customer-session-shell" id="customer-session-card" hidden>
+              <div class="customer-dashboard-head">
+                <div>
+                  <h3>Mi cuenta</h3>
+                  <p class="form-note" id="customer-session-summary"></p>
                 </div>
-                <div class="table-wrap"><table id="customer-orders-table"></table></div>
+                <div class="customer-dashboard-head-actions">
+                  <span class="chip" id="customer-session-chip"></span>
+                  <button class="button button-ghost" id="customer-logout-button" type="button" hidden>Cerrar sesion</button>
+                </div>
               </div>
-            </div>
 
-            <div class="customer-session-side">
-              <form class="form-card account-edit-form" id="customer-profile-form">
-                <h3>Actualizar datos</h3>
-                <div class="form-grid">
-                  <label>Tipo de cliente
-                    <select name="customerType">
-                      <option value="particular">Particular</option>
-                      <option value="empresa">Empresa</option>
-                    </select>
-                  </label>
-                  <label>Usuario<input name="username" required /></label>
-                  <label class="company-field" hidden>Nombre de empresa<input name="companyName" /></label>
-                  <label class="company-field" hidden>CIF<input name="cif" /></label>
-                  <label>Nombre y apellidos<input name="fullName" required /></label>
-                  <label>DNI/NIF<input name="dni" required /></label>
-                  <label>Correo electronico<input name="email" type="email" required /></label>
-                  <label>Telefono<input name="phone" required /></label>
-                  <label>Nueva contraseña<input name="password" type="password" minlength="6" placeholder="Solo si quieres cambiarla" /></label>
-                  <label class="span-2">Direccion de entrega<input name="shippingStreet" required /></label>
-                  <label>Datos del inmueble<input name="shippingProperty" /></label>
-                  <label>Poblacion<input name="shippingCity" required /></label>
-                  <label>Provincia<input name="shippingProvince" required /></label>
-                  <label>Pais<input name="shippingCountry" value="España" required /></label>
-                  <label class="span-2">Direccion de facturacion<input name="billingStreet" required /></label>
-                  <label>Datos del inmueble<input name="billingProperty" /></label>
-                  <label>Poblacion<input name="billingCity" required /></label>
-                  <label>Provincia<input name="billingProvince" required /></label>
-                  <label>Pais<input name="billingCountry" value="España" required /></label>
+              <div class="customer-section-switcher" id="customer-section-switcher">
+                <button class="customer-section-button active" data-customer-section="overview" type="button">Resumen</button>
+                <button class="customer-section-button" data-customer-section="orders" type="button">Pedidos</button>
+                <button class="customer-section-button" data-customer-section="addresses" type="button">Direcciones</button>
+                <button class="customer-section-button" data-customer-section="profile" type="button">Datos</button>
+              </div>
+
+              <div class="customer-section-panel active" id="customer-section-overview">
+                <div class="customer-dashboard-grid">
+                  <article class="account-card account-card-hero">
+                    <span>Cliente</span>
+                    <strong id="account-card-name"></strong>
+                    <small id="account-card-email"></small>
+                  </article>
+                  <article class="account-card">
+                    <span>Direccion de entrega</span>
+                    <strong id="account-card-shipping"></strong>
+                    <small id="account-card-shipping-extra"></small>
+                  </article>
+                  <article class="account-card">
+                    <span>Direccion de facturacion</span>
+                    <strong id="account-card-billing"></strong>
+                    <small id="account-card-billing-extra"></small>
+                  </article>
                 </div>
-                <button class="button button-primary" type="submit">Guardar cambios</button>
-                <p class="form-note" id="customer-profile-message"></p>
-              </form>
+              </div>
+
+              <div class="customer-section-panel" id="customer-section-orders">
+                <div class="form-card customer-orders-card">
+                  <div class="section-head section-head-compact">
+                    <h3>Mis pedidos</h3>
+                  </div>
+                  <div class="table-wrap"><table id="customer-orders-table"></table></div>
+                </div>
+              </div>
+
+              <div class="customer-section-panel" id="customer-section-addresses">
+                <div class="customer-dashboard-grid customer-dashboard-grid-addresses">
+                  <article class="account-card">
+                    <span>Direccion de entrega</span>
+                    <strong id="account-card-shipping-address"></strong>
+                    <small id="account-card-shipping-address-extra"></small>
+                  </article>
+                  <article class="account-card">
+                    <span>Direccion de facturacion</span>
+                    <strong id="account-card-billing-address"></strong>
+                    <small id="account-card-billing-address-extra"></small>
+                  </article>
+                </div>
+              </div>
+
+              <div class="customer-section-panel" id="customer-section-profile">
+                <form class="form-card account-edit-form" id="customer-profile-form">
+                  <h3>Actualizar datos</h3>
+                  <div class="form-grid">
+                    <label>Tipo de cliente
+                      <select name="customerType">
+                        <option value="particular">Particular</option>
+                        <option value="empresa">Empresa</option>
+                      </select>
+                    </label>
+                    <label>Usuario<input name="username" required /></label>
+                    <label class="company-field" hidden>Nombre de empresa<input name="companyName" /></label>
+                    <label class="company-field" hidden>CIF<input name="cif" /></label>
+                    <label>Nombre y apellidos<input name="fullName" required /></label>
+                    <label>DNI/NIF<input name="dni" required /></label>
+                    <label>Correo electronico<input name="email" type="email" required /></label>
+                    <label>Telefono<input name="phone" required /></label>
+                    <label>Nueva contraseña<input name="password" type="password" minlength="6" placeholder="Solo si quieres cambiarla" /></label>
+                    <label class="span-2">Direccion de entrega<input name="shippingStreet" required /></label>
+                    <label>Datos del inmueble<input name="shippingProperty" /></label>
+                    <label>Poblacion<input name="shippingCity" required /></label>
+                    <label>Provincia<input name="shippingProvince" required /></label>
+                    <label>Pais<input name="shippingCountry" value="España" required /></label>
+                    <label class="span-2">Direccion de facturacion<input name="billingStreet" required /></label>
+                    <label>Datos del inmueble<input name="billingProperty" /></label>
+                    <label>Poblacion<input name="billingCity" required /></label>
+                    <label>Provincia<input name="billingProvince" required /></label>
+                    <label>Pais<input name="billingCountry" value="España" required /></label>
+                  </div>
+                  <button class="button button-primary" type="submit">Guardar cambios</button>
+                  <p class="form-note" id="customer-profile-message"></p>
+                </form>
+              </div>
             </div>
           </div>
         </div>
