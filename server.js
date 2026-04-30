@@ -597,6 +597,7 @@ function renderInvoiceHtml(invoice) {
           <h1>Suministros Santa Emilia SL</h1>
           <p class="muted">C/ Calidad, 34 - Edif. 1 Nave 8 Pol. Ind. Los Olivos</p>
           <p class="muted">Getafe - 28906 - Madrid - España</p>
+          <p class="muted">NIF: B87809968</p>
           <p class="muted">pedidos@suministrosemilia.com</p>
         </div>
         <div class="panel">
