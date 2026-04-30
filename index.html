@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suministros Santa Emilia SL | Tienda online de suministros profesionales</title>
+    <meta
+      name="description"
+      content="Tienda online de Suministros Santa Emilia SL para vender productos de cualquier categoria con stock, pedidos, clientes, pagos por tarjeta o transferencia y seguimiento."
+    />
+    <meta
+      name="keywords"
+      content="Suministros Santa Emilia, tienda online, suministros profesionales, productos industriales, venta online, stock, pedidos, Getafe, Madrid"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Suministros Santa Emilia SL" />
+    <meta property="og:title" content="Suministros Santa Emilia SL | Tienda online" />
+    <meta
+      property="og:description"
+      content="Catalogo dinamico, pedidos, clientes, pagos y control de stock para vender cualquier producto."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./public/logo-santa-emilia.png" />
+    <meta name="theme-color" content="#b8202f" />
+    <link rel="canonical" href="https://www.suministrossantaemilia.com/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "Suministros Santa Emilia SL",
+        "description": "Tienda online de suministros profesionales con catalogo dinamico, pedidos, clientes y seguimiento.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "C/ Calidad, 34 - Edif. 1 Nave 8 Pol. Ind. Los Olivos",
+          "addressLocality": "Getafe",
+          "postalCode": "28906",
+          "addressRegion": "Madrid",
+          "addressCountry": "ES"
+        },
+        "telephone": "+34911731881",
+        "email": "pedidos@suministrosemilia.com"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <img src="./public/logo-santa-emilia.png" alt="Suministros Santa Emilia SL" />
+        <span>
+          <strong>Suministros Santa Emilia SL</strong>
+          <small>Tienda online profesional</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Principal">
+        <a href="#catalogo">Catalogo</a>
+        <a href="#cuenta">Mi cuenta</a>
+        <a href="#comprar">Comprar</a>
+        <a href="#acceso-admin">Acceso admin</a>
+        <a href="#panel" id="admin-nav-link" hidden>Panel</a>
+        <a href="#seo" id="seo-nav-link" hidden>SEO</a>
+      </nav>
+      <div class="header-actions">
+        <div class="admin-status" id="admin-status" hidden>
+          <span>Admin activo</span>
+          <button class="text-button" id="header-admin-logout" type="button">Cerrar sesion</button>
+        </div>
+        <button class="icon-button" id="cart-open" type="button" aria-label="Abrir carrito">
+          <span>Carrito</span>
+          <strong id="cart-count">0</strong>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-copy hero-copy-centered">
+          <p class="eyebrow">Suministros Santa Emilia SL</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalogo">Ver productos</a>
+            <a class="button button-ghost" href="#cuenta">Acceder a mi cuenta</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="doodle-strip" aria-label="Ilustraciones minimalistas">
+        <article class="doodle-card">
+          <svg viewBox="0 0 180 140" aria-hidden="true">
+            <rect x="36" y="34" width="108" height="70" rx="8"></rect>
+            <path d="M36 58h108"></path>
+            <path d="M64 34v70"></path>
+            <path d="M92 46h32"></path>
+            <path d="M92 60h24"></path>
+            <path d="M92 74h20"></path>
+            <circle cx="53" cy="46" r="6"></circle>
+            <path d="M28 110c8-6 16-9 24-9"></path>
+            <path d="M124 112c12-10 22-12 28-12"></path>
+          </svg>
+        </article>
+        <article class="doodle-card">
+          <svg viewBox="0 0 180 140" aria-hidden="true">
+            <path d="M42 96V44a8 8 0 0 1 8-8h80l18 18v42a8 8 0 0 1-8 8H50a8 8 0 0 1-8-8Z"></path>
+            <path d="M130 36v20h20"></path>
+            <path d="M62 64h56"></path>
+            <path d="M62 78h46"></path>
+            <path d="M62 92h34"></path>
+            <path d="M32 30c12 2 18 7 24 14"></path>
+            <path d="M118 114c10 2 18 6 28 14"></path>
+          </svg>
+        </article>
+        <article class="doodle-card">
+          <svg viewBox="0 0 180 140" aria-hidden="true">
+            <path d="M34 102V48h112v54"></path>
+            <path d="M34 64h112"></path>
+            <path d="M58 48v54"></path>
+            <path d="M94 48v54"></path>
+            <rect x="42" y="72" width="10" height="18" rx="2"></rect>
+            <rect x="66" y="72" width="18" height="12" rx="2"></rect>
+            <rect x="104" y="72" width="14" height="18" rx="2"></rect>
+            <rect x="126" y="72" width="12" height="12" rx="2"></rect>
+            <path d="M26 108c8-6 16-8 24-8"></path>
+            <path d="M126 34c10 2 18 8 24 14"></path>
+          </svg>
+        </article>
+      </section>
+
+      <section class="category-explorer" aria-label="Familias de producto">
+        <div class="category-explorer-head">
+          <h2>Explora por categoria</h2>
+        </div>
+        <div class="family-grid family-grid-wide" id="family-grid"></div>
+      </section>
+
+      <section class="section featured-section" id="destacados">
+        <div class="section-head">
+          <h2>Seleccionados</h2>
+        </div>
+        <div class="featured-grid" id="featured-grid"></div>
+      </section>
+
+      <section class="section" id="catalogo">
+        <div class="section-head">
+          <h2>Catalogo</h2>
+        </div>
+        <div class="toolbar">
+          <label>
+            Buscar
+            <input id="search-products" type="search" placeholder="Producto, SKU o categoria" />
+          </label>
+          <label>
+            Categoria
+            <select id="category-filter">
+              <option value="">Todas</option>
+            </select>
+          </label>
+          <label>
+            Precio
+            <select id="price-filter">
+              <option value="">Todos</option>
+              <option value="0-25">Hasta 25 EUR</option>
+              <option value="25-100">25 a 100 EUR</option>
+              <option value="100-500">100 a 500 EUR</option>
+              <option value="500+">Mas de 500 EUR</option>
+            </select>
+          </label>
+          <label>
+            Disponibilidad
+            <select id="stock-filter">
+              <option value="">Todo</option>
+              <option value="in-stock">Solo con stock</option>
+            </select>
+          </label>
+          <label>
+            Ordenar
+            <select id="sort-products">
+              <option value="featured">Destacados</option>
+              <option value="name-asc">Nombre A-Z</option>
+              <option value="price-asc">Precio menor</option>
+              <option value="price-desc">Precio mayor</option>
+              <option value="stock-desc">Mas stock</option>
+            </select>
+          </label>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <section class="section" id="cuenta">
+        <div class="section-head">
+          <p class="eyebrow">Cliente</p>
+          <h2>Alta y acceso de cliente</h2>
+        </div>
+        <div class="customer-access-layout">
+          <div class="customer-access-column">
+            <form class="form-card customer-login-card" id="customer-login-form">
+              <h3>Entrar como cliente</h3>
+              <div class="form-grid compact-grid">
+                <label>Email o usuario<input name="identifier" required /></label>
+                <label>Contraseña<input name="password" type="password" required /></label>
+              </div>
+              <div class="hero-actions account-actions">
+                <button class="button button-primary" type="submit">Entrar</button>
+                <button class="button button-ghost" id="customer-logout-button" type="button" hidden>Cerrar sesion</button>
+              </div>
+              <p class="form-note" id="customer-login-message"></p>
+            </form>
+
+            <form class="form-card customer-register-card" id="customer-register-form">
+              <h3>Alta de cliente</h3>
+              <div class="form-grid">
+                <label>Tipo de cliente
+                  <select name="customerType">
+                    <option value="particular">Particular</option>
+                    <option value="empresa">Empresa</option>
+                  </select>
+                </label>
+                <label>Usuario<input name="username" required /></label>
+                <label class="company-field" hidden>Nombre de empresa<input name="companyName" /></label>
+                <label class="company-field" hidden>CIF<input name="cif" /></label>
+                <label>Nombre y apellidos<input name="fullName" required /></label>
+                <label>DNI/NIF<input name="dni" required /></label>
+                <label>Correo electronico<input name="email" type="email" required /></label>
+                <label>Telefono<input name="phone" required /></label>
+                <label>Contraseña<input name="password" type="password" required minlength="6" /></label>
+                <label class="span-2">Direccion de entrega<input name="shippingStreet" required /></label>
+                <label>Datos del inmueble<input name="shippingProperty" /></label>
+                <label>Poblacion<input name="shippingCity" required /></label>
+                <label>Provincia<input name="shippingProvince" required /></label>
+                <label>Pais<input name="shippingCountry" value="España" required /></label>
+                <label class="span-2">Direccion de facturacion<input name="billingStreet" required /></label>
+                <label>Datos del inmueble<input name="billingProperty" /></label>
+                <label>Poblacion<input name="billingCity" required /></label>
+                <label>Provincia<input name="billingProvince" required /></label>
+                <label>Pais<input name="billingCountry" value="España" required /></label>
+              </div>
+              <button class="button button-primary" type="submit">Crear cuenta</button>
+              <p class="form-note" id="customer-register-message"></p>
+            </form>
+          </div>
+        </div>
+
+        <div class="customer-session-shell" id="customer-session-card" hidden>
+          <div class="customer-dashboard-head">
+            <div>
+              <h3>Mi cuenta</h3>
+              <p class="form-note" id="customer-session-summary"></p>
+            </div>
+            <span class="chip" id="customer-session-chip"></span>
+          </div>
+          <div class="customer-session-layout">
+            <div class="customer-session-main">
+              <div class="customer-dashboard-grid">
+                <article class="account-card account-card-hero">
+                  <span>Cliente</span>
+                  <strong id="account-card-name"></strong>
+                  <small id="account-card-email"></small>
+                </article>
+                <article class="account-card">
+                  <span>Direccion de entrega</span>
+                  <strong id="account-card-shipping"></strong>
+                  <small id="account-card-shipping-extra"></small>
+                </article>
+                <article class="account-card">
+                  <span>Direccion de facturacion</span>
+                  <strong id="account-card-billing"></strong>
+                  <small id="account-card-billing-extra"></small>
+                </article>
+              </div>
+              <div class="form-card customer-orders-card">
+                <div class="section-head section-head-compact">
+                  <h3>Mis pedidos</h3>
+                </div>
+                <div class="table-wrap"><table id="customer-orders-table"></table></div>
+              </div>
+            </div>
+
+            <div class="customer-session-side">
+              <form class="form-card account-edit-form" id="customer-profile-form">
+                <h3>Actualizar datos</h3>
+                <div class="form-grid">
+                  <label>Tipo de cliente
+                    <select name="customerType">
+                      <option value="particular">Particular</option>
+                      <option value="empresa">Empresa</option>
+                    </select>
+                  </label>
+                  <label>Usuario<input name="username" required /></label>
+                  <label class="company-field" hidden>Nombre de empresa<input name="companyName" /></label>
+                  <label class="company-field" hidden>CIF<input name="cif" /></label>
+                  <label>Nombre y apellidos<input name="fullName" required /></label>
+                  <label>DNI/NIF<input name="dni" required /></label>
+                  <label>Correo electronico<input name="email" type="email" required /></label>
+                  <label>Telefono<input name="phone" required /></label>
+                  <label>Nueva contraseña<input name="password" type="password" minlength="6" placeholder="Solo si quieres cambiarla" /></label>
+                  <label class="span-2">Direccion de entrega<input name="shippingStreet" required /></label>
+                  <label>Datos del inmueble<input name="shippingProperty" /></label>
+                  <label>Poblacion<input name="shippingCity" required /></label>
+                  <label>Provincia<input name="shippingProvince" required /></label>
+                  <label>Pais<input name="shippingCountry" value="España" required /></label>
+                  <label class="span-2">Direccion de facturacion<input name="billingStreet" required /></label>
+                  <label>Datos del inmueble<input name="billingProperty" /></label>
+                  <label>Poblacion<input name="billingCity" required /></label>
+                  <label>Provincia<input name="billingProvince" required /></label>
+                  <label>Pais<input name="billingCountry" value="España" required /></label>
+                </div>
+                <button class="button button-primary" type="submit">Guardar cambios</button>
+                <p class="form-note" id="customer-profile-message"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section checkout-section" id="comprar">
+        <div class="section-head">
+          <p class="eyebrow">Compra</p>
+          <h2>Carrito, comprador y forma de pago</h2>
+        </div>
+        <div class="checkout-layout">
+          <aside class="cart-panel" id="cart-panel">
+            <div class="panel-title">
+              <h3>Carrito</h3>
+              <button class="text-button" id="clear-cart" type="button">Vaciar</button>
+            </div>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-summary">
+              <div class="cart-total-line">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">0,00 EUR</strong>
+              </div>
+              <div class="cart-total-line">
+                <span>IVA</span>
+                <strong id="cart-tax">0,00 EUR</strong>
+              </div>
+              <div class="cart-total-line">
+                <span>Transporte</span>
+                <strong id="cart-shipping">0,00 EUR</strong>
+              </div>
+              <div class="cart-total">
+                <span>Total</span>
+                <strong id="cart-total">0,00 EUR</strong>
+              </div>
+            </div>
+          </aside>
+
+          <form class="form-card" id="checkout-form">
+            <div class="form-grid">
+              <label>Tipo de cliente
+                <select name="customerType">
+                  <option value="particular">Particular</option>
+                  <option value="empresa">Empresa</option>
+                </select>
+              </label>
+              <label>Usuario<input name="username" required /></label>
+              <label class="company-field" hidden>Nombre de empresa<input name="companyName" /></label>
+              <label class="company-field" hidden>CIF<input name="cif" /></label>
+              <label>Nombre y apellidos<input name="fullName" required /></label>
+              <label>DNI/NIF<input name="dni" required /></label>
+              <label>Correo electronico<input name="email" type="email" required /></label>
+              <label>Telefono<input name="phone" required /></label>
+              <label>Clave de entrada<input name="password" type="password" required minlength="6" /></label>
+              <label class="span-2">Direccion de entrega<input name="shippingStreet" required /></label>
+              <label>Datos del inmueble<input name="shippingProperty" placeholder="Piso, puerta, nave, portal..." /></label>
+              <label>Poblacion<input name="shippingCity" required /></label>
+              <label>Provincia<input name="shippingProvince" required /></label>
+              <label>Pais<input name="shippingCountry" value="España" required /></label>
+              <label class="span-2">Direccion de facturacion<input name="billingStreet" required /></label>
+              <label>Datos del inmueble<input name="billingProperty" placeholder="Piso, puerta, nave, portal..." /></label>
+              <label>Poblacion<input name="billingCity" required /></label>
+              <label>Provincia<input name="billingProvince" required /></label>
+              <label>Pais<input name="billingCountry" value="España" required /></label>
+              <label class="span-2">
+                Forma de pago
+                <select name="paymentMethod" required>
+                  <option value="Tarjeta">Tarjeta bancaria</option>
+                  <option value="Transferencia">Transferencia bancaria</option>
+                </select>
+              </label>
+            </div>
+            <p class="form-note" id="shipping-auto-hint">El transporte se calcula automaticamente cuando añades productos.</p>
+            <button class="button button-primary" type="submit">Generar pedido</button>
+            <p class="form-note" id="checkout-message"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" id="seguimiento">
+        <div class="section-head">
+          <p class="eyebrow">Seguimiento</p>
+          <h2>Consulta de pedido</h2>
+          <p>El comprador puede consultar el estado con su numero de pedido y correo electronico.</p>
+        </div>
+        <form class="track-box" id="track-form">
+          <label>Numero de pedido<input name="orderId" placeholder="SSE-20260421-001" required /></label>
+          <label>Correo electronico<input name="email" type="email" required /></label>
+          <button class="button button-ghost" type="submit">Consultar</button>
+        </form>
+        <div id="track-result" class="track-result"></div>
+      </section>
+
+      <section class="section" id="acceso-admin">
+        <div class="section-head">
+          <p class="eyebrow">Acceso privado</p>
+          <h2>Entrada de administrador</h2>
+        </div>
+        <div class="admin-access-layout">
+          <form class="form-card admin-login-card" id="admin-login-form">
+            <div class="form-grid">
+              <label>Correo administrador<input name="email" type="email" required /></label>
+              <label>Contraseña<input name="password" type="password" required /></label>
+            </div>
+            <div class="hero-actions">
+              <button class="button button-primary" type="submit">Entrar como admin</button>
+              <button class="button button-ghost" id="admin-logout-button" type="button" hidden>Cerrar sesion</button>
+            </div>
+            <p class="form-note" id="admin-login-message"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section admin-section" id="panel" hidden>
+        <div class="section-head">
+          <p class="eyebrow">Administracion</p>
+          <h2>Panel privado de tienda</h2>
+          <p>Gestiona productos, compradores, pedidos, stock y estadisticas conectados a PostgreSQL mediante el backend Node.js.</p>
+        </div>
+
+        <div class="admin-tabs" role="tablist" aria-label="Panel de administracion">
+          <button class="tab active" data-tab="products" type="button">Productos</button>
+          <button class="tab" data-tab="customers" type="button">Compradores</button>
+          <button class="tab" data-tab="orders" type="button">Pedidos</button>
+          <button class="tab" data-tab="shipping" type="button">Transporte</button>
+          <button class="tab" data-tab="stats" type="button">Estadisticas</button>
+        </div>
+
+        <div class="admin-panel active" id="tab-products">
+          <form class="form-card" id="product-form">
+            <input type="hidden" name="id" />
+            <div class="form-grid">
+              <label>Producto<input name="name" required /></label>
+              <label>SKU<input name="sku" required /></label>
+              <label>Categoria<input name="category" required /></label>
+              <label>Stock<input name="stock" type="number" min="0" required /></label>
+              <label>Peso (kg)<input name="weightKg" type="number" min="0" step="0.001" value="0" required /></label>
+              <label>Volumen (m3)<input name="volumeM3" type="number" min="0" step="0.001" value="0" required /></label>
+              <label>Precio compra privado<input name="costPrice" type="number" min="0" step="0.01" required /></label>
+              <label>Precio venta publico<input name="salePrice" type="number" min="0" step="0.01" required /></label>
+              <label>IVA (%)<input name="vatRate" type="number" min="0" step="0.01" value="21" required /></label>
+              <label class="span-2">Foto del producto<input name="image" type="file" accept="image/*" /></label>
+              <label class="span-2">Descripcion<textarea name="description" required></textarea></label>
+            </div>
+            <button class="button button-primary" type="submit">Guardar producto</button>
+          </form>
+          <div class="table-wrap"><table id="products-table"></table></div>
+        </div>
+
+        <div class="admin-panel" id="tab-customers">
+          <div class="table-wrap"><table id="customers-table"></table></div>
+        </div>
+
+        <div class="admin-panel" id="tab-orders">
+          <div class="table-wrap"><table id="orders-table"></table></div>
+          <form class="form-card" id="shipment-form">
+            <input type="hidden" name="orderId" />
+            <div class="form-grid">
+              <label>Pedido<input name="orderNumber" readonly /></label>
+              <label>Transportista<input name="carrierName" placeholder="MRW, SEUR, Correos Express..." /></label>
+              <label>Numero de tracking<input name="trackingNumber" placeholder="Codigo de seguimiento" /></label>
+              <label>URL tracking<input name="trackingUrl" type="url" placeholder="https://..." /></label>
+              <label>Fecha de envio<input name="shippedAt" type="datetime-local" /></label>
+              <label class="checkbox-field"><input name="markAsShipped" type="checkbox" checked /> Marcar pedido como enviado</label>
+            </div>
+            <button class="button button-primary" type="submit">Guardar expedicion</button>
+            <p class="form-note" id="shipment-message"></p>
+          </form>
+
+          <form class="form-card" id="invoice-settings-form">
+            <div class="form-grid">
+              <label>Prefijo<input name="prefix" value="Factura" required /></label>
+              <label>Serie<input name="seriesCode" value="H" required /></label>
+              <label>Ultimo numero<input name="lastSequence" type="number" min="0" step="1" value="132" required /></label>
+              <label>Sufijo fiscal<input name="fiscalSuffix" value="26" required /></label>
+            </div>
+            <p class="form-note">Siguiente factura: <strong id="invoice-settings-preview">Factura_H-0133/26</strong></p>
+            <button class="button button-primary" type="submit">Guardar numeracion</button>
+            <p class="form-note" id="invoice-settings-message"></p>
+          </form>
+        </div>
+
+        <div class="admin-panel" id="tab-shipping">
+          <form class="form-card" id="shipping-settings-form">
+            <div class="form-grid">
+              <label>Envio gratis desde<input name="freeShippingThreshold" type="number" min="0" step="0.01" required /></label>
+            </div>
+            <button class="button button-primary" type="submit">Guardar umbral</button>
+            <p class="form-note" id="shipping-settings-message"></p>
+          </form>
+
+          <form class="form-card" id="shipping-rate-form">
+            <input type="hidden" name="id" />
+            <div class="form-grid">
+              <label>Nombre de tarifa<input name="name" required /></label>
+              <label>Orden<input name="sortOrder" type="number" min="0" step="1" value="0" required /></label>
+              <label>Peso maximo (kg)<input name="maxWeightKg" type="number" min="0" step="0.001" required /></label>
+              <label>Volumen maximo (m3)<input name="maxVolumeM3" type="number" min="0" step="0.001" required /></label>
+              <label>Precio<input name="price" type="number" min="0" step="0.01" required /></label>
+            </div>
+            <button class="button button-primary" type="submit">Guardar tarifa</button>
+            <p class="form-note" id="shipping-rate-message"></p>
+          </form>
+
+          <div class="table-wrap"><table id="shipping-rates-table"></table></div>
+        </div>
+
+        <div class="admin-panel" id="tab-stats">
+          <div class="stats-grid">
+            <article><span>Facturacion</span><strong id="stat-revenue">0,00 EUR</strong></article>
+            <article><span>Coste privado</span><strong id="stat-cost">0,00 EUR</strong></article>
+            <article><span>Beneficio</span><strong id="stat-profit">0,00 EUR</strong></article>
+            <article><span>Unidades vendidas</span><strong id="stat-units">0</strong></article>
+          </div>
+          <div class="table-wrap"><table id="stats-table"></table></div>
+        </div>
+      </section>
+
+      <section class="section seo-section" id="seo" hidden>
+        <div class="section-head">
+          <p class="eyebrow">SEO preparado</p>
+          <h2>Base tecnica para posicionar la tienda</h2>
+        </div>
+        <div class="seo-grid">
+          <article><strong>Metadatos</strong><span>Titulo, descripcion, Open Graph, canonical y schema Store incluidos.</span></article>
+          <article><strong>Contenido indexable</strong><span>Textos claros de categoria, productos, contacto y marca.</span></article>
+          <article><strong>Archivos SEO</strong><span>Se incluyen robots.txt y sitemap.xml como punto de partida.</span></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <strong>SUMINISTROS SANTA EMILIA SL</strong>
+      <span>C/ Calidad, 34 - Edif. 1 Nave 8 Pol. Ind. Los Olivos Getafe - 28906 - Madrid España</span>
+      <a href="./politica-cookies.html">Politica de cookies</a>
+    </footer>
+
+    <dialog class="product-dialog" id="product-dialog">
+      <div class="product-dialog-layout">
+        <button class="text-button product-dialog-close" id="product-dialog-close" type="button">Cerrar</button>
+        <div class="product-dialog-media" id="product-dialog-media"></div>
+        <div class="product-dialog-content">
+          <div class="product-dialog-meta" id="product-dialog-meta"></div>
+          <h3 id="product-dialog-title"></h3>
+          <p id="product-dialog-description"></p>
+          <div class="product-dialog-price-row">
+            <strong class="price" id="product-dialog-price"></strong>
+            <span class="product-tax-note" id="product-dialog-tax"></span>
+          </div>
+          <div class="product-dialog-stock" id="product-dialog-stock"></div>
+          <div class="product-dialog-actions">
+            <label>
+              Cantidad
+              <input id="product-dialog-qty" type="number" min="1" value="1" />
+            </label>
+            <button class="button button-primary" id="product-dialog-add" type="button">Añadir al carrito</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "santa-emilia-shop",
+  "version": "1.0.0",
+  "description": "Backend y frontend para la tienda online de Suministros Santa Emilia SL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1",
+    "resend": "^6.6.0"
+  }
+}
