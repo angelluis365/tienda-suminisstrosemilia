@@ -925,6 +925,19 @@ function fillCustomerForms(customer) {
   renderCustomerDashboard(customer);
 }
 
+function resetCheckoutForm() {
+  const form = qs("#checkout-form");
+  if (!form) return;
+  form.reset();
+  const fields = form.elements;
+  fields.customerType.value = "particular";
+  fields.shippingCountry.value = "España";
+  fields.billingCountry.value = "España";
+  fields.paymentMethod.value = "Tarjeta";
+  fields.password.value = "";
+  toggleCompanyFields(form, false);
+}
+
 async function fileToDataUrl(file) {
   return new Promise((resolve) => {
     if (!file) {
@@ -1093,9 +1106,15 @@ async function handleCustomerLogin(event) {
 async function handleCustomerLogout() {
   await apiFetch("/api/auth/logout", { method: "POST" });
   state.customerSession = { authenticated: false, customer: null };
+  cart = [];
+  resetCheckoutForm();
   setCustomerVisibility(false);
   qs("#customer-login-message").textContent = "Sesion de cliente cerrada.";
   qs("#customer-profile-message").textContent = "";
+  qs("#checkout-message").textContent = "";
+  qs("#customer-session-summary").textContent = "";
+  qs("#customer-session-chip").textContent = "";
+  renderCart();
   await loadAllData();
 }
 
