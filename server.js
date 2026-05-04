@@ -1281,7 +1281,14 @@ app.patch("/api/admin/orders/:id/status", requireAdmin, async (req, res) => {
     return res.status(400).json({ error: "Estado no valido." });
   }
 
-  const paymentStatus = status === "payment_pending" ? "pending" : status === "cancelled" ? "failed" : undefined;
+  const paymentStatus =
+    status === "payment_pending"
+      ? "pending"
+      : status === "payment_confirmed"
+        ? "paid"
+        : status === "cancelled"
+          ? "failed"
+          : undefined;
 
   const result = await withTransaction(async (client) => {
     const current = await client.query("SELECT id FROM orders WHERE id = $1", [req.params.id]);
