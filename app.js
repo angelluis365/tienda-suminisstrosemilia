@@ -874,6 +874,37 @@ function toggleCompanyFields(form, isCompany) {
   });
 }
 
+function addressesMatch(fields) {
+  return (
+    fields.shippingStreet.value.trim() === fields.billingStreet.value.trim() &&
+    fields.shippingProperty.value.trim() === fields.billingProperty.value.trim() &&
+    fields.shippingCity.value.trim() === fields.billingCity.value.trim() &&
+    fields.shippingProvince.value.trim() === fields.billingProvince.value.trim() &&
+    fields.shippingCountry.value.trim() === fields.billingCountry.value.trim()
+  );
+}
+
+function copyShippingToBilling(form) {
+  const fields = form.elements;
+  fields.billingStreet.value = fields.shippingStreet.value;
+  fields.billingProperty.value = fields.shippingProperty.value;
+  fields.billingCity.value = fields.shippingCity.value;
+  fields.billingProvince.value = fields.shippingProvince.value;
+  fields.billingCountry.value = fields.shippingCountry.value;
+}
+
+function syncBillingAddressMode(form) {
+  const fields = form.elements;
+  const sameAsShipping = fields.sameAsShipping;
+  if (!sameAsShipping) return;
+  if (sameAsShipping.checked) {
+    copyShippingToBilling(form);
+  }
+  ["billingStreet", "billingProperty", "billingCity", "billingProvince", "billingCountry"].forEach((name) => {
+    fields[name].readOnly = sameAsShipping.checked;
+  });
+}
+
 function fillCustomerForms(customer) {
   if (!customer) return;
   const checkout = qs("#checkout-form").elements;
@@ -896,7 +927,9 @@ function fillCustomerForms(customer) {
   checkout.billingCity.value = customer.billingCity || "";
   checkout.billingProvince.value = customer.billingProvince || "";
   checkout.billingCountry.value = customer.billingCountry || "España";
+  checkout.sameAsShipping.checked = addressesMatch(checkout);
   toggleCompanyFields(qs("#checkout-form"), Boolean(customer.companyName));
+  syncBillingAddressMode(qs("#checkout-form"));
 
   const profile = qs("#customer-profile-form")?.elements;
   if (profile) {
@@ -919,7 +952,9 @@ function fillCustomerForms(customer) {
     profile.billingCity.value = customer.billingCity || "";
     profile.billingProvince.value = customer.billingProvince || "";
     profile.billingCountry.value = customer.billingCountry || "España";
+    profile.sameAsShipping.checked = addressesMatch(profile);
     toggleCompanyFields(qs("#customer-profile-form"), Boolean(customer.companyName));
+    syncBillingAddressMode(qs("#customer-profile-form"));
   }
 
   renderCustomerDashboard(customer);
@@ -935,7 +970,9 @@ function resetCheckoutForm() {
   fields.billingCountry.value = "España";
   fields.paymentMethod.value = "Tarjeta";
   fields.password.value = "";
+  fields.sameAsShipping.checked = true;
   toggleCompanyFields(form, false);
+  syncBillingAddressMode(form);
 }
 
 async function fileToDataUrl(file) {
@@ -1372,6 +1409,23 @@ function setupCompanyToggles() {
   });
 }
 
+function setupAddressSync() {
+  ["#customer-register-form", "#checkout-form", "#customer-profile-form"].forEach((selector) => {
+    const form = qs(selector);
+    const fields = form?.elements;
+    if (!form || !fields?.sameAsShipping) return;
+
+    ["shippingStreet", "shippingProperty", "shippingCity", "shippingProvince", "shippingCountry"].forEach((name) => {
+      fields[name].addEventListener("input", () => {
+        if (fields.sameAsShipping.checked) copyShippingToBilling(form);
+      });
+    });
+
+    fields.sameAsShipping.addEventListener("change", () => syncBillingAddressMode(form));
+    syncBillingAddressMode(form);
+  });
+}
+
 function setupCustomerViews() {
   qsa(".account-view-button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -1425,6 +1479,7 @@ function setupEvents() {
     qs("#comprar").scrollIntoView({ behavior: "smooth" });
   });
   setupCompanyToggles();
+  setupAddressSync();
   setupCustomerViews();
 }
 
